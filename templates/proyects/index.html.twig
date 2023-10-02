@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proyects index{% endblock %}
+
+{% block body %}
+    <h1>Proyects index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Tecnologias</th>
+                <th>Enlace</th>
+                <th>Fechacreacion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proyect in proyects %}
+            <tr>
+                <td>{{ proyect.id }}</td>
+                <td>{{ proyect.nombre }}</td>
+                <td>{{ proyect.descripcion }}</td>
+                <td>{{ proyect.tecnologias }}</td>
+                <td>{{ proyect.enlace }}</td>
+                <td>{{ proyect.fechacreacion ? proyect.fechacreacion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_proyects_show', {'id': proyect.id}) }}">show</a>
+                    <a href="{{ path('app_proyects_edit', {'id': proyect.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_proyects_new') }}">Create new</a>
+{% endblock %}

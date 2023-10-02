@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Userportfolio{% endblock %}
+
+{% block body %}
+    <h1>Create new Userportfolio</h1>
+
+    {{ include('userportfolio/_form.html.twig') }}
+
+    <a href="{{ path('app_userportfolio_index') }}">back to list</a>
+{% endblock %}
